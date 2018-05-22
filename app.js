@@ -4,7 +4,7 @@ const hbs = require('hbs');
 const mysql = require('mysql'); 
 const path = require('path');
 
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const saltRounds = 10;
 
 const cookieParser = require('cookie-parser');
