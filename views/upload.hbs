@@ -1,0 +1,38 @@
+{{>header}} 
+
+<div class="container wrap">
+  <div class="row">
+
+  	<div class="col-sm-12">
+  	{{#if dat}}
+  		{{#each dat as |item|}}
+  			<div>
+  				{{item.[1]}} {{item.[2]}} : {{item.[3]}} [{{item.[4]}}]
+  			</div>
+  		{{/each}}
+	  {{/if}}
+  	</div>
+
+  	<div class="col-sm-12">
+  		<form action="/upload" method="post" enctype="multipart/form-data">
+  			<div class="form-group">
+  				<label for="upload">ไฟล์:</label>
+  				<input type="file" id="upload" name="fileUpload">
+  			</div>
+			<button type="submit" class="btn btn-primary">อัพโหลด</button>
+		</form>
+  	</div>
+
+    <div class="col-sm-12" style="margin-top:20px;">
+      <h3>วิธีใช้</h3>
+      <div>1. ใส่ข้อมูลตาม Column (firstname, lastname, tracking_number, tracking_type)</div>
+      <img src="/images/example_1.png" width="400">
+      
+      <div>2. บันทึกไฟล์นามสกุล CSV(Comma delimited)</div>
+      <img src="/images/example_2.png" width="400">
+    </div>
+
+  </div>
+ </div>
+
+{{>footer}} 

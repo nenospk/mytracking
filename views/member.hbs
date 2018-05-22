@@ -1,0 +1,59 @@
+{{>header}} 
+
+<div class="container wrap">
+  <div class="row">
+
+  	<div class="col-sm-12">
+  	{{#if dat}}
+  		{{#each dat as item}}
+  			<div>
+  				{{item.[1]}} {{item.[2]}} : {{item.[3]}} [{{item.[4]}}]
+  			</div>
+  		{{/each}}
+	  {{/if}}
+  	</div>
+
+  	<div class="col-sm-6">
+      <form action="/member" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="store_uname">ยูเซอร์เนมร้าน:</label>
+          <input type="text" class="form-control" id="store_uname" name="store_uname" value="{{store.store_uname}}" disabled="true">
+        </div>
+        <div class="form-group">
+          <label for="store_name">ชื่อร้าน:</label>
+          <input type="text" class="form-control" id="store_name" name="store_name" value="{{store.store_name}}">
+        </div>
+        <div class="form-group">
+          <label for="store_detail">คำอธิบายร้าน:</label>
+          <input type="text" class="form-control" id="store_detail" name="store_detail" value="{{store.store_detail}}">
+        </div>
+        <input type="hidden" name="action" value="edit_detail">
+        <button type="submit" class="btn btn-primary">ตกลง</button>
+      </form>
+    </div>
+
+    <div class="col-sm-6">
+      <form action="/member" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="store_uname">โลโก้ร้าน:</label>
+          {{#if store.store_img_1}}
+            <div><img src="{{store.store_img_1}}" height="100"></div>
+          {{else}}
+            <div>ยังไม่มีรูป</div>
+          {{/if}}
+          <div><input type="file" id="upload" name="logoUpload"></div>
+        </div>
+        <input type="hidden" name="action" value="edit_logo">
+        <button type="submit" class="btn btn-primary">ตกลง</button>
+      </form>
+    </div>
+
+    <div class="col-sm-12" style="margin-top:20px;">
+      <h3>Upload file</h3>
+      <a href="/upload">Upload file</a>
+    </div>
+
+  </div>
+ </div>
+
+{{>footer}} 

@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit&subset=thai');
+
+html,body {
+	font-family: 'Kanit', sans-serif;
+}
+
+a {
+	color: #000 !important;
+	text-decoration: none !important;
+}
+
+a:hover {
+	color: #000 !important;
+	text-decoration: none !important;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    border-radius: 0px;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.nav {
+	margin-bottom: 20px;
+}
+
+label {
+	margin-bottom: 0px;
+}
+
+.table td, .table th {
+	padding: 7px 15px !important;
+}
+
+.fileContainer {
+	display: inline-block;
+	padding: 8px 20px;
+	border: 1px solid #ccc;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+}
+
+.fileContainer [type=file] {
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+
+.alert {
+	border-radius: 0px !important;
+}
+
+.btn {
+	border-radius: 0px;
+	padding: 7px 30px;
+}
+
+.footer {
+	text-align: center;
+	margin-top: 20px;
+	padding: 20px;
+}
+
+.header{
+	padding: 12px 10px 25px 10px;
+	border-bottom: 1px solid black;
+}
+
+.logo {
+	text-align: center;
+	font-size: 30px;
+}
+
+.menu {
+	text-align: center;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.menu li {
+	text-transform: uppercase;
+	display: inline-block;
+}
+
+.menu li a:hover {
+	color: blue !important;
+}
+
+.menu li:after {
+    content: " /";
+}
+.menu li:last-child:after {
+    content: "";
+}

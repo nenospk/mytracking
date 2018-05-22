@@ -1,0 +1,36 @@
+{{>header}} 
+<style type="text/css">
+input#search {
+	display: inline-block;
+	width: 160px;
+	-webkit-transition: width 0.4s ease-in-out;
+	transition: width 0.4s ease-in-out;
+}
+
+input#search:focus {
+	width: 360px;
+}
+</style>
+<!--
+<div class="jumbotron text-center">
+	<input type="text" id="search" class="form-control" placeholder="ค้นหาหมายเลขพัสดุ ..."> 
+</div>
+-->
+<div class="container wrap">
+  <div class="row">
+
+  	<div class="col-sm-12">
+  		ร้านค้า :
+  	</div>
+  	{{#if stores}}
+  	<div class="col-sm-12">
+		{{#each stores}}
+			<div><a href="/store/{{this.store_uname}}">{{this.store_name}}</a></div>
+		{{/each}}
+	</div>
+	{{/if}}
+
+  </div>
+</div> 
+
+{{>footer}} 
