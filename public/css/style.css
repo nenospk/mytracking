@@ -104,16 +104,6 @@ label {
     content: "";
 }
 
-.sec_social {
-	padding: 5px 10px;
-	padding-left: 0;
-}
-
-.sec_social img {
-	width: 48px;
-	border-radius: 10px;
-}
-
 /* Store Style */
 .section {
 }
@@ -129,4 +119,22 @@ label {
 .sec_store_detail {
 	margin-top: 10px;
 	text-align: center;
+}
+
+.sec_social {
+	padding: 8px 10px;
+	padding-left: 0;
+}
+
+.sec_social img {
+	width: 48px;
+}
+
+.sec_line {
+	text-align: center;
+	background: #00c200;
+}
+
+.label_line_id {
+	color: white;
 }
