@@ -25,30 +25,38 @@ var name,addr;
 const app = express();
 const port = 10000;
 
+// CORS
+app.use(function(req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	res.header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE, PUT");
+	next();
+})
+
 // Body parser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: true}));
 app.use(cookieParser());
 
 // Database
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Tracking2018",
-  database: "checktracking",
-  multipleStatements: true
+	host: "localhost",
+	user: "root",
+	password: "nenaneno",
+	database: "checktracking",
+	multipleStatements: true
 });
 con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected to database!");
+	if(err) throw err;
+	console.log("Connected to database!");
 });
 
 var options = {
-    host: 'localhost',
-    port: 3306,
-    user: 'root',
-    password: 'Tracking2018',
-    database: 'checktracking'
+	host: 'localhost',
+	port: 3306,
+	user: 'root',
+	password: 'nenaneno',
+	database: 'checktracking'
 };
 
 var sessionStore = new MySQLStore(options);
@@ -120,26 +128,26 @@ app.get('/login', function(req, res) {
 });
 
 passport.use(new LocalStrategy(
-  function(email, pwd, done) {
-  	var sql = "SELECT * FROM member natural join store WHERE member_email = " + con.escape(email);
-	con.query(sql, function (err, result, fields) {
-		if (err) done(err);
-		if(result.length === 0) {
-			done(null, false, { message: 'อีเมลล์ / พาสเวิร์ด ไม่ถูกต้อง' });
-		} else {
-			const hash = result[0].member_pwd;
-			
-			bcrypt.compare(pwd, hash, function(err, res) {
-				if(res === true) {
-					return done(null, result);
-				} else {
-					return done(null, false, { message: 'อีเมลล์ / พาสเวิร์ด ไม่ถูกต้อง' });
-				}
-			});
-		}
+	function(email, pwd, done) {
+		var sql = "SELECT * FROM member natural join store WHERE member_email = " + con.escape(email);
+		con.query(sql, function (err, result, fields) {
+			if (err) done(err);
+			if(result.length === 0) {
+				done(null, false, { message: 'อีเมลล์ / พาสเวิร์ด ไม่ถูกต้อง' });
+			} else {
+				const hash = result[0].member_pwd;
+				
+				bcrypt.compare(pwd, hash, function(err, res) {
+					if(res === true) {
+						return done(null, result);
+					} else {
+						return done(null, false, { message: 'อีเมลล์ / พาสเวิร์ด ไม่ถูกต้อง' });
+					}
+				});
+			}
 
-	});
-  }
+		});
+	}
 ));
 	
 passport.serializeUser(function(member_id, done) {
@@ -156,7 +164,7 @@ function authMiddleware(req, res, next) {
 }
 
 app.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/login', failureFlash : true }),function(req, res) {
-		res.redirect('/member');
+	res.redirect('/member');
 });
 
 // Logout
@@ -447,6 +455,116 @@ app.post('/member', authMiddleware, function(req, res) {
 			});
 		}
 	})
+});
+
+// Edit
+app.get('/edit', authMiddleware, function(req, res) {
+	var store = req.user[0].store_uname;
+	var sql = "SELECT * FROM store WHERE store_uname = " + con.escape(store);
+	con.query(sql, function (err, result_store, fields) {
+		if (err) throw err;
+		
+		if(result_store.length == 1) {
+			res.render('edit', {
+				store: result_store[0],
+			});
+		} else {
+			res.render('store', {
+				error: 'ไม่พบร้านค้า'
+			});
+		}
+	});
+});
+
+const storage_edit = multer.diskStorage({
+	destination: function (req, file, cb) {
+		var store_uname = req.params.store_uname;
+		var addr = './public/uploads/store/' + store_uname;
+		cb(null, addr)
+	},
+	filename: function (req, file, cb) {
+	  	name = req.params.action + '_' + random.generate({
+	  		length: 6,
+	  		charset: 'abcdefghijklmnopqrstuvwxyz'
+	  	}) + '_' + Date.now() + path.extname(file.originalname);
+	    cb(null, name)
+  	}
+});
+
+const upload_edit = multer({
+	storage: storage_edit,
+	limit: {
+		fileSize: 1000000
+	},
+	fileFilter: function(req, file, cb) {
+		checkFile_edit(file, cb);
+	}
+}).any();
+
+function checkFile_edit(file, cb) {
+	const filetypes = /png/;
+	const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+	//const mimetype = filetypes.test(file.mimetype);
+
+	if(extname) {
+		return cb(null, true);
+	} else {
+		cb('ไฟล์ PNG เท่านั้น');
+	}
+}
+
+app.post('/edit/:store_uname/:action', authMiddleware, function(req, res) {
+	var store_uname = req.params.store_uname;
+	var action = req.params.action;
+
+	var addr = './public/uploads/store/' + store_uname;
+	if(!fs.existsSync(addr)){
+	    fs.mkdirSync(addr);
+	}
+
+	upload_edit(req, res, (err) => {
+		if(err) {
+			res.send(err);
+			return;
+		}
+		
+		if(action == 'logo') {
+			var files = req.files;
+			if(files.length > 0){
+				var path = '/uploads/store/' + store_uname + '/' + files[0].filename;
+				var query = con.query("UPDATE store SET store_img_1 = " + con.escape(path) + " WHERE store_uname = " + con.escape(req.user[0].store_uname), function(err, result) {
+					if(err) res.send('ไม่สามารถบันทึกรายการได้')
+					else res.send(true);
+				});
+			} else {
+				res.send('กรุณาเลือกไฟล์');
+			}
+		} else if(action == 'store_name') {
+			var query = con.query("UPDATE store SET store_name = " + con.escape(req.body.store_name) + ", store_detail = " + con.escape(req.body.store_detail) + " WHERE store_uname = " + con.escape(req.user[0].store_uname), function(err, result) {
+				if(err) res.send('ไม่สามารถบันทึกรายการได้')
+				else res.send(true);
+			});
+		} else if(action == 'line') {
+			var query = con.query("UPDATE store SET store_line_id = " + con.escape(req.body.store_line_id) + ", store_line_link = " + con.escape(req.body.store_line_link) + " WHERE store_uname = " + con.escape(req.user[0].store_uname), function(err, result) {
+				if(err) res.send('ไม่สามารถบันทึกรายการได้')
+				else res.send(true);
+			});
+		} else if(action == 'fb') {
+			var query = con.query("UPDATE store SET store_fb_uname = " + con.escape(req.body.store_fb_uname) + ", store_fb_link = " + con.escape(req.body.store_fb_link) + " WHERE store_uname = " + con.escape(req.user[0].store_uname), function(err, result) {
+				if(err) res.send('ไม่สามารถบันทึกรายการได้')
+				else res.send(true);
+			});
+		} else if(action == 'ig') {
+			var query = con.query("UPDATE store SET store_ig_uname = " + con.escape(req.body.store_ig_uname) + ", store_ig_link = " + con.escape(req.body.store_ig_link) + " WHERE store_uname = " + con.escape(req.user[0].store_uname), function(err, result) {
+				if(err) res.send('ไม่สามารถบันทึกรายการได้')
+				else res.send(true);
+			});
+		} else {
+			res.send(false);
+		}
+		
+	});
+
 });
 
 // Upload

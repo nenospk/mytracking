@@ -44,64 +44,91 @@
   <div class="row">
 
   	<div class="col-sm-12" style="margin-bottom:15px;">
-  	{{#if store}}
-  		{{#if store.store_img_1}}
-  			<div class="section sec_img_1">
-  				<img src="{{store.store_img_1}}" id="label_img_1" height="100"> 
-  				<div class="edit"><a href="#" data-toggle="modal" data-target="#modal_store_img_1">(แก้ไข)</a></div>
-  			</div>
-  		{{/if}}
-	  		<div class="section sec_store_name">
-	  			<h2 style="margin-bottom:-8px;" id="label_store_name">ร้าน {{store.store_name}}</h2>
-	  		</div>
-	  		<div class="section sec_store_detail">
-	  			<label id="label_store_detail">{{store.store_detail}}</label>
-	  			<div class="edit"><a href="#" data-toggle="modal" data-target="#modal_store_name">(แก้ไข)</a></div>
-	  		</div>
-	{{/if}}
+    	{{#if store}}
+    		{{#if store.store_img_1}}
+    			<div class="section sec_img_1">
+    				<img src="{{store.store_img_1}}" id="label_img_1" height="100"> 
+    				<div class="edit"><a href="#" data-toggle="modal" data-target="#modal_store_img_1">(แก้ไข)</a></div>
+    			</div>
+    		{{/if}}
+  	  		<div class="section sec_store_name">
+  	  			<h2 style="margin-bottom:-8px;" id="label_store_name">ร้าน {{store.store_name}}</h2>
+  	  		</div>
+  	  		<div class="section sec_store_detail">
+  	  			<label id="label_store_detail">{{store.store_detail}}</label>
+  	  			<div class="edit"><a href="#" data-toggle="modal" data-target="#modal_store_name">(แก้ไข)</a></div>
+  	  		</div>
+      {{/if}}
   	</div>
 
   	<div class="col-sm-12">
-  		<form class="form-inline section" style="margin-bottom:12px;">
+  		<form class="form-inline" style="margin-bottom:12px;">
   			<input type="hidden" id="store" value="{{store.store_uname}}">
   			<input type="text" class="form-control" id="key" placeholder="กรอกชื่อผู้รับ" style="padding:7px 10px; margin-right:3px;" value="{{key}}">
   			<button type="button" id="btn_search" class="btn btn-primary">ค้นหา</button>
   		</form> 
-		{{#if list}}
-			<div class="table-responsive">
-				<table class="table table-bordered">
-				    <thead>
-				      <tr>
-				        <th>ชื่อ นามสกุล</th>
-				        <th>เลข Tracking</th>
-				        <th>ประเภท</th>
-				      </tr>
-				    </thead>
-				    <tbody>
-						{{#each list}}
-						<tr>
-							<td>{{this.list_fname}} {{this.list_lname}}</td>
-							<td>{{this.list_track_no}}</td>
-							<td>{{this.list_track_type}}</td>
-						</tr>
-						{{/each}}
-					</tbody>
-				</table>
-			</div>
-		{{else if search}}
-			<div>ไม่พบรายการที่ค้นหา</div>
-		{{/if}}
+    	{{#if list}}
+    		<div class="table-responsive">
+    			<table class="table table-bordered">
+    			    <thead>
+    			      <tr>
+    			        <th>ชื่อ นามสกุล</th>
+    			        <th>เลข Tracking</th>
+    			        <th>ประเภท</th>
+    			      </tr>
+    			    </thead>
+    			    <tbody>
+    					{{#each list}}
+    					<tr>
+    						<td>{{this.list_fname}} {{this.list_lname}}</td>
+    						<td>{{this.list_track_no}}</td>
+    						<td>{{this.list_track_type}}</td>
+    					</tr>
+    					{{/each}}
+    				</tbody>
+    			</table>
+    		</div>
+    	{{else if search}}
+    		<div>ไม่พบรายการที่ค้นหา</div>
+    	{{/if}}
   	</div>
 
-  	<div class="col-sm-12">
+    <div class="col-sm-6">
+      <div class="section sec_gal_1">
+        GAL1
+        <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_1">(แก้ไข)</a></div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="section sec_gal_1">
+        GAL1
+        <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_2">(แก้ไข)</a></div>
+      </div>
+    </div>
+
+    <div class="col-sm-12">
+      <div class="section sec_gal_1">
+        GAL1
+        <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_3">(แก้ไข)</a></div>
+      </div>
+    </div>
+
+  	<div class="col-sm-4">
   		<div class="section sec_line sec_social">
   			<a href="{{store.store_line_link}}" id="label_line_link" target="_blank"><img src="/images/line.png"> <label id="label_line_id">{{store.store_line_id}}</label></a>
   			<div class="edit"><a href="#" data-toggle="modal" data-target="#modal_line">(แก้ไข)</a></div>
   		</div>
+    </div>
+
+    <div class="col-sm-4">
   		<div class="section sec_fb sec_social">
   			<a href="{{store.store_fb_link}}" id="label_fb_link" target="_blank"><img src="/images/facebook.png"> <label id="label_fb_uname">{{store.store_fb_uname}}</label></a>
   			<div class="edit"><a href="#" data-toggle="modal" data-target="#modal_fb">(แก้ไข)</a></div>
   		</div>
+    </div>
+
+    <div class="col-sm-4">
   		<div class="section sec_ig sec_social">
   			<a href="{{store.store_ig_link}}" id="label_ig_link" target="_blank"><img src="/images/instagram.png"> <label id="label_ig_uname">{{store.store_ig_uname}}</label></a>
   			<div class="edit"><a href="#" data-toggle="modal" data-target="#modal_ig">(แก้ไข)</a></div>
