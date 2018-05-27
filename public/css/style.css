@@ -166,6 +166,10 @@ label {
 	text-align: center;
 }
 
+#label_gal_1 img{
+	width: 100%;
+}
+
 .sec_store_name{
 	text-align: center;
 }
