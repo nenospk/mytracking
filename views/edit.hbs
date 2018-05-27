@@ -80,9 +80,9 @@
       <div class="section sec_gal_1">
         <div id="label_gal_1">
           {{#if store.store_gal_1_img}}
-            <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
+            <div><img src="{{store.store_gal_1_img}}"></div>
           {{else}}
-            <img src="{{store.store_img_1}}"> 
+            <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
           {{/if}}
         </div>
         <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_1">(แก้ไข)</a></div>
