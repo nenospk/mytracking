@@ -91,14 +91,26 @@
 
     <div class="col-sm-6">
       <div class="section sec_gal_2">
-        <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
+        <div id="label_gal_2">
+          {{#if store.store_gal_2_img}}
+            <div><img src="{{store.store_gal_2_img}}"></div>
+          {{else}}
+            <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
+          {{/if}}
+        </div>
         <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_2">(แก้ไข)</a></div>
       </div>
     </div>
 
     <div class="col-sm-12">
       <div class="section sec_gal_3">
-        <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
+        <div id="label_gal_3">
+          {{#if store.store_gal_3_img}}
+            <div><img src="{{store.store_gal_3_img}}"></div>
+          {{else}}
+            <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
+          {{/if}}
+        </div>
         <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_3">(แก้ไข)</a></div>
       </div>
     </div>
@@ -153,7 +165,7 @@
 					{{#if store.store_img_1}}
 						<div><img src="{{store.store_img_1}}" id="logoPreview" height="175"></div>
 					{{else}}
-						<div><img src="/images/original.png" id="logoPreview" width="215" height="175"></div>
+						<div><img src="/images/original.png" id="logoPreview" height="175"></div>
 					{{/if}}
 					<div><input type="file" id="logoUpload" name="logoUpload"></div>
      		</form>
@@ -338,7 +350,7 @@
             {{#if store.store_gal_1_img}}
               <div><img src="{{store.store_gal_1_img}}" id="gal_1_preview" height="175"></div>
             {{else}}
-              <div><img src="/images/original.png" id="gal_1_preview" width="215" height="175"></div>
+              <div><img src="/images/original.png" id="gal_1_preview" height="175"></div>
             {{/if}}
             <div><input type="file" id="gal_1_upload" name="gal_1_upload"></div>
           </form>
@@ -373,7 +385,7 @@
             {{#if store.store_gal_2_img}}
               <div><img src="{{store.store_gal_2_img}}" id="gal_2_preview" height="175"></div>
             {{else}}
-              <div><img src="/images/original.png" id="gal_2_preview" width="215" height="175"></div>
+              <div><img src="/images/original.png" id="gal_2_preview" height="175"></div>
             {{/if}}
             <div><input type="file" id="gal_2_upload" name="gal_2_upload"></div>
           </form>
@@ -408,7 +420,7 @@
             {{#if store.store_gal_3_img}}
               <div><img src="{{store.store_gal_3_img}}" id="gal_3_preview" height="175"></div>
             {{else}}
-              <div><img src="/images/original.png" id="gal_3_preview" width="215" height="175"></div>
+              <div><img src="/images/original.png" id="gal_3_preview" height="175"></div>
             {{/if}}
             <div><input type="file" id="gal_3_upload" name="gal_3_upload"></div>
           </form>
