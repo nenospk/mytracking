@@ -370,14 +370,14 @@ const upload_logo = multer({
 }).single('logoUpload');
 
 function checkFile_logo(file, cb) {
-	const filetypes = /png/;
+	const filetypes = /png|jpeg|jpg/;
 	const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
 	//const mimetype = filetypes.test(file.mimetype);
 
 	if(extname) {
 		return cb(null, true);
 	} else {
-		cb('ไฟล์ PNG เท่านั้น');
+		cb('ไฟล์ PNG, JPEG, JPG เท่านั้น');
 	}
 }
 
@@ -502,14 +502,14 @@ const upload_edit = multer({
 }).any();
 
 function checkFile_edit(file, cb) {
-	const filetypes = /png/;
+	const filetypes = /png|jpeg|jpg/;
 	const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
 	//const mimetype = filetypes.test(file.mimetype);
 
 	if(extname) {
 		return cb(null, true);
 	} else {
-		cb('ไฟล์ PNG เท่านั้น');
+		cb('ไฟล์ PNG, JPEG, JPG เท่านั้น');
 	}
 }
 
