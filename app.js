@@ -561,8 +561,8 @@ app.post('/edit/:store_uname/:action', authMiddleware, function(req, res) {
 			});
 		} else if(action == 'gal_1' || action == 'gal_2' || action == 'gal_3') {
 			var col = "store_" + action + "_img";
-			var data = req.body["store_" + action + "_img"];
-			var query = con.query("UPDATE store SET " + col + " = " + con.escape(data) + " WHERE store_uname = " + con.escape(req.user[0].store_uname), function(err, result) {
+			var path = '/uploads/store/' + store_uname + '/' + files[0].filename;
+			var query = con.query("UPDATE store SET " + col + " = " + con.escape(path) + " WHERE store_uname = " + con.escape(req.user[0].store_uname), function(err, result) {
 				if(err) res.send('ไม่สามารถบันทึกรายการได้')
 				else res.send(true);
 			});
