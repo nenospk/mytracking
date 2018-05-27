@@ -78,9 +78,9 @@
 
     <div class="col-sm-6">
       <div class="section sec_gal_1">
-        <label id="label_gal_1">
+        <div id="label_gal_1">
           <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
-        </label>
+        </div>
         <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_1">(แก้ไข)</a></div>
       </div>
     </div>
@@ -359,10 +359,20 @@ $(document).ready(function(){
     });
 
     function preview(input, preview) {
-		  if (input.files && input.files[0]) {
+      if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
           $(preview).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
+
+    function preview_2(input, preview) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $(preview).html("<img src='" + e.target.result + "'>");
         }
         reader.readAsDataURL(input.files[0]);
       }
