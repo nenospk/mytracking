@@ -330,7 +330,7 @@
         <!-- Modal body -->
         <div class="modal-body">
           <form enctype="multipart/form-data" id="edit_gal_1">
-            <label for="logoPreview">โลโก้ร้าน:</label>
+            <label for="logoPreview">รูปภาพ:</label>
             {{#if store.store_gal_1_img}}
               <div><img src="{{store.store_gal_1_img}}" id="gal_1_preview" height="100"></div>
             {{else}}
@@ -509,7 +509,7 @@ $(document).ready(function(){
     });
 
     $("#edit_gal_1").change(function() {
-      preview(this, '#logoPreview');
+      preview(this, '#gal_1_preview');
     });
 
     $('#modal_gal_1_save').on('click', function(e) {
@@ -526,7 +526,7 @@ $(document).ready(function(){
           contentType: false,
           success: function(res) {
         if(res == true) {
-          preview(fileSelect, '#label_gal_1');
+          preview_2(fileSelect, '#label_gal_1');
           alert('บันทึกเรียบร้อย');
         }
         else alert(res);
