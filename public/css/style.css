@@ -178,6 +178,21 @@ label {
 	width: 100%;
 }
 
+img#gal_1_preview {
+	width: 70%;
+	height: auto;
+}
+
+img#gal_2_preview {
+	width: 70%;
+	height: auto;
+}
+
+img#gal_3_preview {
+	width: 70%;
+	height: auto;
+}
+
 .sec_store_name{
 	text-align: center;
 }
