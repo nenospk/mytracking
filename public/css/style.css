@@ -166,7 +166,7 @@ label {
 	text-align: center;
 }
 
-#label_gal_1 img{
+#label_gal_1,#label_gal_2,#label_gal_3 img{
 	width: 100%;
 }
 
