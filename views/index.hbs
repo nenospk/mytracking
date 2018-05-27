@@ -21,14 +21,14 @@ input#search:focus {
 
   	<div class="col-sm-12">
   		ร้านค้า :
+  		{{#if stores}}
+			{{#each stores}}
+				<div><a href="/store/{{this.store_uname}}">{{this.store_name}}</a></div>
+			{{/each}}
+		{{else}}
+			<div>ไม่มีร้านค้า</div>
+		{{/if}}
   	</div>
-  	{{#if stores}}
-  	<div class="col-sm-12">
-		{{#each stores}}
-			<div><a href="/store/{{this.store_uname}}">{{this.store_name}}</a></div>
-		{{/each}}
-	</div>
-	{{/if}}
 
   </div>
 </div> 

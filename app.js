@@ -42,7 +42,7 @@ app.use(cookieParser());
 var con = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "Tracking2018",
+	password: "nenaneno",
 	database: "checktracking",
 	multipleStatements: true
 });
@@ -55,7 +55,7 @@ var options = {
 	host: 'localhost',
 	port: 3306,
 	user: 'root',
-	password: 'Tracking2018',
+	password: 'nenaneno',
 	database: 'checktracking'
 };
 
@@ -556,6 +556,13 @@ app.post('/edit/:store_uname/:action', authMiddleware, function(req, res) {
 			});
 		} else if(action == 'ig') {
 			var query = con.query("UPDATE store SET store_ig_uname = " + con.escape(req.body.store_ig_uname) + ", store_ig_link = " + con.escape(req.body.store_ig_link) + " WHERE store_uname = " + con.escape(req.user[0].store_uname), function(err, result) {
+				if(err) res.send('ไม่สามารถบันทึกรายการได้')
+				else res.send(true);
+			});
+		} else if(action == 'gal_1' || action == 'gal_2' || action == 'gal_3') {
+			var col = "store_" + action + "_img";
+			var data = req.body["store_" + action + "_img"];
+			var query = con.query("UPDATE store SET " + col + " = " + con.escape(data) + " WHERE store_uname = " + con.escape(req.user[0].store_uname), function(err, result) {
 				if(err) res.send('ไม่สามารถบันทึกรายการได้')
 				else res.send(true);
 			});

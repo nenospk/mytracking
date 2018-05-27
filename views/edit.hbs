@@ -13,59 +13,42 @@
 
 <body>
 
-<div class="container" style="margin-top: 20px;">
-	<div class="row">
-		<div class="col-sm-12">
-			{{#if success_msg}}
-				<div class="alert alert-success alert-dismissable fade show">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					{{success_msg}}
-				</div>
-			{{/if}}
-
-			{{#if error_msg}}
-				<div class="alert alert-danger alert-dismissable fade show">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					{{error_msg}}
-				</div>
-			{{/if}}
-
-			{{#if error}}
-				<div class="alert alert-danger alert-dismissable fade show">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					{{error}}
-				</div>
-			{{/if}}
-		</div>
-	</div>
+<div class="store_top" style="margin-bottom:15px;">
+  {{#if store}}
+    {{#if store.store_img_1}}
+      <div class="section sec_img_1">
+        <img src="{{store.store_img_1}}" id="label_img_1"> 
+      </div>
+    {{else}}
+      <div class="section sec_img_1" style="width:64px; margin:0 auto;">
+        <div class="placeholder_img ratio1-1"><label>1280 x 1280</label></div>
+      </div>
+    {{/if}}
+      <div class="section sec_store_name">
+        <h2 style="margin-top: 8px;" id="label_store_name">ร้าน {{store.store_name}}</h2>
+      </div>
+      <div class="section sec_store_detail">
+        <label id="label_store_detail">{{store.store_detail}}</label>
+      </div>
+      <div class="container edit">
+        <a href="#" data-toggle="modal" data-target="#modal_store_name">(แก้ไข)</a>
+        <a href="#" data-toggle="modal" data-target="#modal_store_img_1">(เปลี่ยนรูป)</a>
+      </div>
+  {{/if}}
 </div>
 
 <div class="container wrap">
   <div class="row">
 
-  	<div class="col-sm-12" style="margin-bottom:15px;">
-    	{{#if store}}
-    		{{#if store.store_img_1}}
-    			<div class="section sec_img_1">
-    				<img src="{{store.store_img_1}}" id="label_img_1" height="100"> 
-    				<div class="edit"><a href="#" data-toggle="modal" data-target="#modal_store_img_1">(แก้ไข)</a></div>
-    			</div>
-    		{{/if}}
-  	  		<div class="section sec_store_name">
-  	  			<h2 style="margin-bottom:-8px;" id="label_store_name">ร้าน {{store.store_name}}</h2>
-  	  		</div>
-  	  		<div class="section sec_store_detail">
-  	  			<label id="label_store_detail">{{store.store_detail}}</label>
-  	  			<div class="edit"><a href="#" data-toggle="modal" data-target="#modal_store_name">(แก้ไข)</a></div>
-  	  		</div>
-      {{/if}}
-  	</div>
-
   	<div class="col-sm-12">
-  		<form class="form-inline" style="margin-bottom:12px;">
+  		<form class="form-inline search-form" style="margin-bottom:12px;">
   			<input type="hidden" id="store" value="{{store.store_uname}}">
-  			<input type="text" class="form-control" id="key" placeholder="กรอกชื่อผู้รับ" style="padding:7px 10px; margin-right:3px;" value="{{key}}">
-  			<button type="button" id="btn_search" class="btn btn-primary">ค้นหา</button>
+  			<div class="left">
+          <input type="text" class="form-control" id="key" placeholder="กรอกชื่อผู้รับ" style="padding:7px 10px;" value="{{key}}">
+        </div>
+        <div class="right">
+  			  <button type="button" id="btn_search" class="btn btn-primary">ค้นหา</button>
+        </div>
   		</form> 
     	{{#if list}}
     		<div class="table-responsive">
@@ -95,43 +78,51 @@
 
     <div class="col-sm-6">
       <div class="section sec_gal_1">
-        GAL1
+        <label id="label_gal_1">
+          <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
+        </label>
         <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_1">(แก้ไข)</a></div>
       </div>
     </div>
 
     <div class="col-sm-6">
-      <div class="section sec_gal_1">
-        GAL1
+      <div class="section sec_gal_2">
+        <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
         <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_2">(แก้ไข)</a></div>
       </div>
     </div>
 
     <div class="col-sm-12">
-      <div class="section sec_gal_1">
-        GAL1
+      <div class="section sec_gal_3">
+        <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
         <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_3">(แก้ไข)</a></div>
       </div>
     </div>
 
   	<div class="col-sm-4">
-  		<div class="section sec_line sec_social">
-  			<a href="{{store.store_line_link}}" id="label_line_link" target="_blank"><img src="/images/line.png"> <label id="label_line_id">{{store.store_line_id}}</label></a>
-  		</div>
+  		<a href="{{store.store_line_link}}" id="label_line_link" target="_blank">
+        <div class="section sec_line sec_social">
+  			  <label id="label_line_id">{{store.store_line_id}}</label>
+  		  </div>
+      </a>
       <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_line">(แก้ไข)</a></div>
     </div>
 
     <div class="col-sm-4">
-  		<div class="section sec_fb sec_social">
-  			<a href="{{store.store_fb_link}}" id="label_fb_link" target="_blank"><img src="/images/facebook.png"> <label id="label_fb_uname">{{store.store_fb_uname}}</label></a>
-  		</div>
+      <a href="{{store.store_fb_link}}" id="label_fb_link" target="_blank">
+    		<div class="section sec_fb sec_social">
+    		  <label id="label_fb_uname">{{store.store_fb_uname}}</label>
+    		</div>
+      </a>
       <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_fb">(แก้ไข)</a></div>
     </div>
 
     <div class="col-sm-4">
-  		<div class="section sec_ig sec_social">
-  			<a href="{{store.store_ig_link}}" id="label_ig_link" target="_blank"><img src="/images/instagram.png"> <label id="label_ig_uname">{{store.store_ig_uname}}</label></a>
-  		</div>
+      <a href="{{store.store_ig_link}}" id="label_ig_link" target="_blank">
+  		  <div class="section sec_ig sec_social">
+          <label id="label_ig_uname">{{store.store_ig_uname}}</label>
+  		  </div>
+      </a>
       <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_ig">(แก้ไข)</a></div>
   	</div>
 
@@ -161,7 +152,7 @@
 						<div>ยังไม่มีรูป</div>
 					{{/if}}
 					<div><input type="file" id="logoUpload" name="logoUpload"></div>
-     			</form>
+     		</form>
 			</div>
 
         </div>
@@ -236,7 +227,7 @@
 					<input type="text" class="form-control" id="line_id" name="store_line_id" value="{{store.store_line_id}}">
 				</div>
 				<div class="form-group">
-					<label for="line_link">Link to line:</label>
+					<label for="line_link">ลิ้งไป line:</label>
 					<input type="text" class="form-control" id="line_link" name="store_line_link" value="{{store.store_line_link}}">
 				</div>
 			</form>
@@ -268,11 +259,11 @@
         <div class="modal-body">
         	<form id="edit_fb">
 				<div class="form-group">
-					<label for="fb_uname">ไลน์ไอดี:</label>
+					<label for="fb_uname">ชื่อ facebook:</label>
 					<input type="text" class="form-control" id="fb_uname" name="store_fb_uname" value="{{store.store_fb_uname}}">
 				</div>
 				<div class="form-group">
-					<label for="fb_link">Link to facebook:</label>
+					<label for="fb_link">ลิ้งไป facebook:</label>
 					<input type="text" class="form-control" id="fb_link" name="store_fb_link" value="{{store.store_fb_link}}">
 				</div>
 			</form>
@@ -302,22 +293,57 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-        	<form id="edit_ig">
-				<div class="form-group">
-					<label for="ig_uname">ไลน์ไอดี:</label>
-					<input type="text" class="form-control" id="ig_uname" name="store_ig_uname" value="{{store.store_ig_uname}}">
-				</div>
-				<div class="form-group">
-					<label for="ig_link">Link to facebook:</label>
-					<input type="text" class="form-control" id="ig_link" name="store_ig_link" value="{{store.store_ig_link}}">
-				</div>
-			</form>
+          <form id="edit_ig">
+        <div class="form-group">
+          <label for="ig_uname">ชื่อ instagram:</label>
+          <input type="text" class="form-control" id="ig_uname" name="store_ig_uname" value="{{store.store_ig_uname}}">
+        </div>
+        <div class="form-group">
+          <label for="ig_link">ลิ้งไป instagram:</label>
+          <input type="text" class="form-control" id="ig_link" name="store_ig_link" value="{{store.store_ig_link}}">
+        </div>
+      </form>
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-        	<button type="button" class="btn btn-primary" id="modal_ig_save">บันทึก</button>
-        	<button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+          <button type="button" class="btn btn-primary" id="modal_ig_save">บันทึก</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+        </div>
+        
+      </div>
+    </div>
+</div>
+
+<!-- sec_gal_1 -->
+<div class="modal fade" id="modal_gal_1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header
+        <div class="modal-header">
+         <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        -->
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form enctype="multipart/form-data" id="edit_gal_1">
+            <label for="logoPreview">โลโก้ร้าน:</label>
+            {{#if store.store_gal_1_img}}
+              <div><img src="{{store.store_gal_1_img}}" id="gal_1_preview" height="100"></div>
+            {{else}}
+              <div>ยังไม่มีรูป</div>
+            {{/if}}
+            <div><input type="file" id="gal_1_upload" name="gal_1_upload"></div>
+          </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="modal_gal_1_save">บันทึก</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
         </div>
         
       </div>
@@ -333,18 +359,18 @@ $(document).ready(function(){
     });
 
     function preview(input, preview) {
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function(e) {
-				$(preview).attr('src', e.target.result);
-			}
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
+		  if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          $(preview).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.files[0]);
+      }
+    }
 
     $("#logoUpload").change(function() {
-		preview(this, '#logoPreview');
-	});
+      preview(this, '#logoPreview');
+    });
 
     $('#modal_store_img_1_save').on('click', function(e) {
     	var fileSelect = document.getElementById('logoUpload');
@@ -469,6 +495,36 @@ $(document).ready(function(){
         		alert("Error: ", err)
         	},
         	crossDoamin: true
+        })
+    });
+
+    $("#edit_gal_1").change(function() {
+      preview(this, '#logoPreview');
+    });
+
+    $('#modal_gal_1_save').on('click', function(e) {
+      var fileSelect = document.getElementById('gal_1_upload');
+
+        var action = "gal_1";
+        var form = document.getElementById('edit_gal_1');
+        var data = new FormData(form);
+        $.ajax({
+          url: 'http://188.166.225.239/edit/' + $('#store').val() + '/' + action,
+          type: 'POST',
+          data: data,
+          processData: false,
+          contentType: false,
+          success: function(res) {
+        if(res == true) {
+          preview(fileSelect, '#label_gal_1');
+          alert('บันทึกเรียบร้อย');
+        }
+        else alert(res);
+          },
+          error: function(err) {
+            alert("Error: ", err)
+          },
+          crossDoamin: true
         })
     });
 
