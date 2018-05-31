@@ -108,7 +108,7 @@ label {
     content: "";
 }
 
-.col-sm-4, .col-sm-6, .col-sm-12 {
+.col-sm-4, .col-sm-6, .col-sm-12, .col-6 {
 	margin-bottom: 8px;
 }
 
@@ -138,10 +138,6 @@ label {
 	padding-top: 56.25%; /* 16:9 */
 }
 
-.label_img_1 {
-	width: 64px;
-}
-
 .search-form #key {
 	display: inline-block;
 	float: left;
@@ -154,16 +150,21 @@ label {
 }
 
 .store_top {
-	padding-top: 20px;
-	padding-bottom: 15px;
-	background: #eee;
+	padding: 16px;
 }
 
-.section {
+#label_logo {
+	display: inline-block;
 }
 
-.sec_img_1 {
-	text-align: center;
+#label_logo img{
+	width: 32px;
+	height: 32px;
+}
+
+#label_img_1 img{
+	width: 100%;
+	max-height: 270px;
 }
 
 #label_gal_1 img{
@@ -176,6 +177,16 @@ label {
 
 #label_gal_3 img{
 	width: 100%;
+}
+
+img#logo_preview {
+	width: 64px;
+	height: 64px;
+}
+
+img#img_1_preview {
+	width: 70%;
+	height: auto;
 }
 
 img#gal_1_preview {
@@ -194,11 +205,17 @@ img#gal_3_preview {
 }
 
 .sec_store_name{
-	text-align: center;
+	float: right;
+	display: inline-block;
+}
+
+#label_store_name {
+	font-size: 24px;
+	font-weight: 400;
 }
 
 .sec_store_detail {
-	margin-top: -8px;
+	margin-top: 15px;
 	text-align: center;
 }
 
@@ -225,4 +242,9 @@ img#gal_3_preview {
 .sec_ig {
 	background-color: #c536a4;
 	background-image: url('/images/instagram.png');
+}
+
+.sec_phone {
+	background-color: #f3c95b;
+	background-image: url('/images/phone.png');
 }

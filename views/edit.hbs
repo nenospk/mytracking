@@ -13,31 +13,53 @@
 
 <body>
 
-<div class="store_top" style="margin-bottom:15px;">
+<div class="store_top">
   {{#if store}}
-    {{#if store.store_img_1}}
-      <div class="section sec_img_1">
-        <img src="{{store.store_img_1}}" id="label_img_1"> 
-      </div>
-    {{else}}
-      <div class="section sec_img_1" style="width:64px; margin:0 auto;">
-        <div class="placeholder_img ratio1-1"><label>1280 x 1280</label></div>
-      </div>
-    {{/if}}
-      <div class="section sec_store_name">
-        <h2 style="margin-top: 8px;" id="label_store_name">ร้าน {{store.store_name}}</h2>
-      </div>
-      <div class="section sec_store_detail">
-        <label id="label_store_detail">{{store.store_detail}}</label>
-      </div>
-      <div class="container edit">
-        <a href="#" data-toggle="modal" data-target="#modal_store_name">(แก้ไข)</a>
-        <a href="#" data-toggle="modal" data-target="#modal_store_img_1">(เปลี่ยนรูป)</a>
-      </div>
+    <div id="label_logo">
+      {{#if store.store_logo}}
+        <div class="section sec_logo">
+          <img src="{{store.store_logo}}"> 
+        </div>
+      {{else}}
+        <div class="section sec_logo" style="width:32px; height:32px;">
+          <div class="placeholder_img ratio1-1"><label style="font-size:10px;">64x64</label></div>
+        </div>
+      {{/if}}
+    </div>
+    <div class="section sec_store_name">
+      <label id="label_store_name">{{store.store_name}}</label>
+    </div>
   {{/if}}
 </div>
 
-<div class="container wrap">
+<div class="section sec_img_1">
+  <div id="label_img_1">
+    {{#if store.store_img_1}}
+        <img src="{{store.store_img_1}}"> 
+    {{else}}
+      <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
+    {{/if}}
+  </div>
+</div>
+
+<div class="container edit">
+  <a href="#" data-toggle="modal" data-target="#modal_store_img_1">(เปลี่ยนรูป)</a>
+</div>
+
+<div class="section sec_store_detail">
+  {{#if store.store_detail}}
+    <label id="label_store_detail">{{store.store_detail}}</label>
+  {{else}}
+    <label id="label_store_detail">คำอธิบายร้าน...</label>
+  {{/if}}
+</div>
+
+<div class="container edit">
+  <a href="#" data-toggle="modal" data-target="#modal_store_name">(แก้ไข)</a>
+  <a href="#" data-toggle="modal" data-target="#modal_store_logo">(เปลี่ยนโลโก้)</a>
+</div>
+
+<div class="container wrap" style="margin-top:15px;">
   <div class="row">
 
   	<div class="col-sm-12">
@@ -76,26 +98,26 @@
     	{{/if}}
   	</div>
 
-    <div class="col-sm-6">
+    <div class="col-6" style="padding-right: 5px;">
       <div class="section sec_gal_1">
         <div id="label_gal_1">
           {{#if store.store_gal_1_img}}
             <div><img src="{{store.store_gal_1_img}}"></div>
           {{else}}
-            <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
+            <div class="placeholder_img ratio1-1"><label>1280 x 1280</label></div>
           {{/if}}
         </div>
         <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_1">(แก้ไข)</a></div>
       </div>
     </div>
 
-    <div class="col-sm-6">
+    <div class="col-6" style="padding-left: 5px;">
       <div class="section sec_gal_2">
         <div id="label_gal_2">
           {{#if store.store_gal_2_img}}
             <div><img src="{{store.store_gal_2_img}}"></div>
           {{else}}
-            <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
+            <div class="placeholder_img ratio1-1"><label>1280 x 1280</label></div>
           {{/if}}
         </div>
         <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_2">(แก้ไข)</a></div>
@@ -118,7 +140,11 @@
   	<div class="col-sm-4">
   		<a href="{{store.store_line_link}}" id="label_line_link" target="_blank">
         <div class="section sec_line sec_social">
-  			  <label id="label_line_id">{{store.store_line_id}}</label>
+          {{#if store.store_line_id}}
+  			    <label id="label_line_id">{{store.store_line_id}}</label>
+          {{else}}
+            <label id="label_line_id">line</label>
+          {{/if}}
   		  </div>
       </a>
       <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_line">(แก้ไข)</a></div>
@@ -127,7 +153,11 @@
     <div class="col-sm-4">
       <a href="{{store.store_fb_link}}" id="label_fb_link" target="_blank">
     		<div class="section sec_fb sec_social">
-    		  <label id="label_fb_uname">{{store.store_fb_uname}}</label>
+          {{#if store.store_fb_uname}}
+            <label id="label_fb_uname">{{store.store_fb_uname}}</label>
+          {{else}}
+            <label id="label_fb_uname">facebook</label>
+          {{/if}}
     		</div>
       </a>
       <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_fb">(แก้ไข)</a></div>
@@ -135,14 +165,85 @@
 
     <div class="col-sm-4">
       <a href="{{store.store_ig_link}}" id="label_ig_link" target="_blank">
-  		  <div class="section sec_ig sec_social">
-          <label id="label_ig_uname">{{store.store_ig_uname}}</label>
-  		  </div>
+        <div class="section sec_ig sec_social">
+          {{#if store.store_ig_uname}}
+            <label id="label_ig_uname">{{store.store_ig_uname}}</label>
+          {{else}}
+            <label id="label_ig_uname">instagram</label>
+          {{/if}}
+        </div>
       </a>
       <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_ig">(แก้ไข)</a></div>
-  	</div>
+    </div>
+
+    <div class="col-sm-4">
+      <a href="#" target="_blank">
+        <div class="section sec_phone sec_social">
+          {{#if store.store_phone}}
+            <label id="label_phone">{{store.store_phone}}</label>
+          {{else}}
+            <label id="label_phone">เบอร์โทรศัพท์</label>
+          {{/if}}
+        </div>
+      </a>
+      <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_phone">(แก้ไข)</a></div>
+    </div>
+
+    <div class="col-sm-12" align="center" style="margin-top:10px;">
+      {{#if store}}
+      <div id="label_logo">
+        {{#if store.store_logo}}
+          <div class="section sec_logo">
+            <img src="{{store.store_logo}}" width="64" height="64"> 
+          </div>
+        {{else}}
+          <div class="section sec_logo" style="width:64px; height:64px;">
+            <div class="placeholder_img ratio1-1"><label style="font-size:10px;">64x64</label></div>
+          </div>
+        {{/if}}
+        </div>
+      {{/if}}
+    </div>
 
   </div>
+</div>
+
+<!-- sec_store_logo -->
+<div class="modal fade" id="modal_store_logo">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header
+        <div class="modal-header">
+         <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        -->
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+      <div class="form-group">
+        <form enctype="multipart/form-data" id="edit_logo">
+          <label for="logo_preview">โลโก้ร้าน:</label>
+          {{#if store.store_logo}}
+            <div><img src="{{store.store_logo}}" id="logo_preview" ></div>
+          {{else}}
+            <div><img src="/images/original.png" id="logo_preview" ></div>
+          {{/if}}
+          <div><input type="file" id="logo_upload" name="logo_upload"></div>
+        </form>
+      </div>
+
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="modal_store_logo_save">บันทึก</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+        </div>
+        
+      </div>
+    </div>
 </div>
 
 <!-- sec_store_img_1 -->
@@ -159,24 +260,24 @@
         
         <!-- Modal body -->
         <div class="modal-body">
-			<div class="form-group">
-				<form enctype="multipart/form-data" id="edit_logo">
-					<label for="logoPreview">โลโก้ร้าน:</label>
-					{{#if store.store_img_1}}
-						<div><img src="{{store.store_img_1}}" id="logoPreview" ></div>
-					{{else}}
-						<div><img src="/images/original.png" id="logoPreview" ></div>
-					{{/if}}
-					<div><input type="file" id="logoUpload" name="logoUpload"></div>
-     		</form>
-			</div>
+      <div class="form-group">
+        <form enctype="multipart/form-data" id="img_1">
+          <label for="img_1_preview">โลโก้ร้าน:</label>
+          {{#if store.store_img_1}}
+            <div><img src="{{store.store_img_1}}" id="img_1_preview" ></div>
+          {{else}}
+            <div><img src="/images/original.png" id="img_1_preview" ></div>
+          {{/if}}
+          <div><input type="file" id="img_1_upload" name="img_1_upload"></div>
+        </form>
+      </div>
 
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-        	<button type="button" class="btn btn-primary" id="modal_store_img_1_save">บันทึก</button>
-        	<button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+          <button type="button" class="btn btn-primary" id="modal_store_img_1_save">บันทึก</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
         </div>
         
       </div>
@@ -331,6 +432,38 @@
     </div>
 </div>
 
+<!-- sec_phone -->
+<div class="modal fade" id="modal_phone">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header
+        <div class="modal-header">
+         <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        -->
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form id="edit_phone">
+        <div class="form-group">
+          <label for="phone">เบอร์โทรศัพท์:</label>
+          <input type="text" class="form-control" id="phone" name="store_phone" value="{{store.store_phone}}">
+        </div>
+      </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="modal_phone_save">บันทึก</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+        </div>
+        
+      </div>
+    </div>
+</div>
+
 <!-- sec_gal_1 -->
 <div class="modal fade" id="modal_gal_1">
     <div class="modal-dialog modal-dialog-centered">
@@ -464,33 +597,63 @@ $(document).ready(function(){
       }
     }
 
-    $("#logoUpload").change(function() {
-      preview(this, '#logoPreview');
+    $("#logo_upload").change(function() {
+      preview(this, '#logo_preview');
     });
 
-    $('#modal_store_img_1_save').on('click', function(e) {
-    	var fileSelect = document.getElementById('logoUpload');
+    $('#modal_img_logo_save').on('click', function(e) {
+      var fileSelect = document.getElementById('logo_upload');
 
         var action = "logo";
         var form = document.getElementById('edit_logo');
         var data = new FormData(form);
         $.ajax({
-        	url: 'http://188.166.225.239/edit/' + $('#store').val() + '/' + action,
-        	type: 'POST',
-        	data: data,
-        	processData: false,
-        	contentType: false,
-        	success: function(res) {
-				if(res == true) {
-					preview(fileSelect, '#label_img_1');
-					alert('บันทึกเรียบร้อย');
-				}
-				else alert(res);
-        	},
-        	error: function(err) {
-        		alert("Error: ", err)
-        	},
-        	crossDoamin: true
+          url: 'http://188.166.225.239/edit/' + $('#store').val() + '/' + action,
+          type: 'POST',
+          data: data,
+          processData: false,
+          contentType: false,
+          success: function(res) {
+        if(res == true) {
+          preview_2(fileSelect, '#label_logo');
+          alert('บันทึกเรียบร้อย');
+        }
+        else alert(res);
+          },
+          error: function(err) {
+            alert("Error: ", err)
+          },
+          crossDoamin: true
+        })
+    });
+
+    $("#img_1_upload").change(function() {
+      preview(this, '#img_1_preview');
+    });
+
+    $('#modal_store_img_1_save').on('click', function(e) {
+      var fileSelect = document.getElementById('img_1_upload');
+
+        var action = "img_1";
+        var form = document.getElementById('edit_img_1');
+        var data = new FormData(form);
+        $.ajax({
+          url: 'http://188.166.225.239/edit/' + $('#store').val() + '/' + action,
+          type: 'POST',
+          data: data,
+          processData: false,
+          contentType: false,
+          success: function(res) {
+        if(res == true) {
+          preview_2(fileSelect, '#label_img_1');
+          alert('บันทึกเรียบร้อย');
+        }
+        else alert(res);
+          },
+          error: function(err) {
+            alert("Error: ", err)
+          },
+          crossDoamin: true
         })
     });
 
@@ -574,23 +737,47 @@ $(document).ready(function(){
         var form = document.getElementById('edit_ig');
         var data = new FormData(form);
         $.ajax({
-        	url: 'http://188.166.225.239/edit/' + $('#store').val() + '/' + action,
-        	type: 'POST',
-        	data: data,
-        	processData: false,
-        	contentType: false,
-        	success: function(res) {
-				if(res == true) {
-					$("#label_ig_link").attr("href", $('#ig_link').val());
-					$('#label_ig_uname').html($('#ig_uname').val());
-					alert('บันทึกเรียบร้อย');
-				}
-				else alert(res);
-        	},
-        	error: function(err) {
-        		alert("Error: ", err)
-        	},
-        	crossDoamin: true
+          url: 'http://188.166.225.239/edit/' + $('#store').val() + '/' + action,
+          type: 'POST',
+          data: data,
+          processData: false,
+          contentType: false,
+          success: function(res) {
+        if(res == true) {
+          $("#label_ig_link").attr("href", $('#ig_link').val());
+          $('#label_ig_uname').html($('#ig_uname').val());
+          alert('บันทึกเรียบร้อย');
+        }
+        else alert(res);
+          },
+          error: function(err) {
+            alert("Error: ", err)
+          },
+          crossDoamin: true
+        })
+    });
+
+    $('#modal_phone_save').on('click', function(e) {
+        var action = "phone";
+        var form = document.getElementById('edit_phone');
+        var data = new FormData(form);
+        $.ajax({
+          url: 'http://188.166.225.239/edit/' + $('#store').val() + '/' + action,
+          type: 'POST',
+          data: data,
+          processData: false,
+          contentType: false,
+          success: function(res) {
+        if(res == true) {
+          $('#label_phone').html($('#phone').val());
+          alert('บันทึกเรียบร้อย');
+        }
+        else alert(res);
+          },
+          error: function(err) {
+            alert("Error: ", err)
+          },
+          crossDoamin: true
         })
     });
 
