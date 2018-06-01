@@ -230,7 +230,7 @@ img#gal_3_preview {
 }
 
 .sec_line {
-	background-color: #59c03b;
+	/* background-color: #59c03b; */
 	background-image: url('/images/line.jpg');
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -239,7 +239,7 @@ img#gal_3_preview {
 }
 
 .sec_fb {
-	background-color: #3a559f;
+	/* background-color: #3a559f; */
 	background-image: url('/images/facebook.jpg');
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -247,7 +247,7 @@ img#gal_3_preview {
 }
 
 .sec_ig {
-	background-color: #fff;
+	/* background-color: #fff; */
 	background-image: url('/images/instagram.jpg');
 	background-position: center center;
 	background-repeat: no-repeat;
@@ -255,7 +255,7 @@ img#gal_3_preview {
 }
 
 .sec_phone {
-	background-color: #f3c95b;
+	/* background-color: #f3c95b; */
 	background-image: url('/images/phone.jpg');
 	background-position: center center;
 	background-repeat: no-repeat;
