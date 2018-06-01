@@ -108,7 +108,7 @@ label {
     content: "";
 }
 
-.col-sm-4, .col-sm-6, .col-sm-12, .col-6 {
+.col-sm-4, .col-sm-6, .col-sm-12, .col-4 {
 	margin-bottom: 8px;
 }
 
@@ -151,6 +151,7 @@ label {
 
 .store_top {
 	padding: 16px;
+	border-bottom: 1px solid #eee;
 }
 
 #label_logo {
@@ -215,12 +216,11 @@ img#gal_3_preview {
 }
 
 .sec_store_detail {
-	margin-top: 15px;
+	margin-top: 12px;
 	text-align: center;
 }
 
 .sec_social {
-	padding: 15px 10px;
 	padding-left: 0;
 	color: white;
 	text-align: center;
@@ -230,21 +230,54 @@ img#gal_3_preview {
 }
 
 .sec_line {
-	background-color: #00c200;
-	background-image: url('/images/line.svg');
+	background-color: #59c03b;
+	background-image: url('/images/line.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+    background-size: contain;
+
 }
 
 .sec_fb {
 	background-color: #3a559f;
-	background-image: url('/images/facebook.png');
+	background-image: url('/images/facebook.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .sec_ig {
-	background-color: #c536a4;
-	background-image: url('/images/instagram.png');
+	background-color: #fff;
+	background-image: url('/images/instagram.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .sec_phone {
 	background-color: #f3c95b;
-	background-image: url('/images/phone.png');
+	background-image: url('/images/phone.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#label_line_id {
+	padding-top: 42px;
+	padding-bottom: 5px;
+}
+
+#label_fb_uname {
+	padding-top: 42px;
+	padding-bottom: 5px;
+}
+
+#label_ig_uname {
+	padding-top: 42px;
+	padding-bottom: 5px;
+}
+
+#label_phone {
+	padding-top: 42px;
+	padding-bottom: 5px;
 }

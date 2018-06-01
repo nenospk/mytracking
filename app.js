@@ -42,7 +42,7 @@ app.use(cookieParser());
 var con = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "Tracking2018",
+	password: "nenaneno",
 	database: "checktracking",
 	multipleStatements: true
 });
@@ -55,7 +55,7 @@ var options = {
 	host: 'localhost',
 	port: 3306,
 	user: 'root',
-	password: 'Tracking2018',
+	password: 'nenaneno',
 	database: 'checktracking'
 };
 
@@ -570,7 +570,7 @@ app.post('/edit/:store_uname/:action', authMiddleware, function(req, res) {
 				if(err) res.send('ไม่สามารถบันทึกรายการได้')
 				else res.send(true);
 			});
-		} else if(action == 'gal_1' || action == 'gal_2' || action == 'gal_3') {
+		} else if(action == 'gal_1' || action == 'gal_2' || action == 'gal_3' || action == 'gal_4') {
 			var col = "store_" + action + "_img";
 			var files = req.files;
 			var path = '/uploads/store/' + store_uname + '/' + files[0].filename;

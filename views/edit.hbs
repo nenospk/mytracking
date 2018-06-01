@@ -32,12 +32,17 @@
   {{/if}}
 </div>
 
+<div class="container edit">
+  <a href="#" data-toggle="modal" data-target="#modal_store_name">(แก้ไข)</a>
+  <a href="#" data-toggle="modal" data-target="#modal_store_logo">(เปลี่ยนโลโก้)</a>
+</div>
+
 <div class="section sec_img_1">
   <div id="label_img_1">
     {{#if store.store_img_1}}
         <img src="{{store.store_img_1}}"> 
     {{else}}
-      <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
+      <div class="placeholder_img ratio16-9"><label>851 x 315</label></div>
     {{/if}}
   </div>
 </div>
@@ -52,11 +57,6 @@
   {{else}}
     <label id="label_store_detail">คำอธิบายร้าน...</label>
   {{/if}}
-</div>
-
-<div class="container edit">
-  <a href="#" data-toggle="modal" data-target="#modal_store_name">(แก้ไข)</a>
-  <a href="#" data-toggle="modal" data-target="#modal_store_logo">(เปลี่ยนโลโก้)</a>
 </div>
 
 <div class="container wrap" style="margin-top:15px;">
@@ -98,20 +98,20 @@
     	{{/if}}
   	</div>
 
-    <div class="col-6" style="padding-right: 5px;">
+    <div class="col-sm-12">
       <div class="section sec_gal_1">
         <div id="label_gal_1">
           {{#if store.store_gal_1_img}}
             <div><img src="{{store.store_gal_1_img}}"></div>
           {{else}}
-            <div class="placeholder_img ratio1-1"><label>1280 x 1280</label></div>
+            <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
           {{/if}}
         </div>
         <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_1">(แก้ไข)</a></div>
       </div>
     </div>
 
-    <div class="col-6" style="padding-left: 5px;">
+    <div class="col-4" style="padding-left:15px; padding-right:1px;">
       <div class="section sec_gal_2">
         <div id="label_gal_2">
           {{#if store.store_gal_2_img}}
@@ -124,20 +124,33 @@
       </div>
     </div>
 
-    <div class="col-sm-12">
+    <div class="col-4" style="padding-left:8px; padding-right:8px;">
       <div class="section sec_gal_3">
         <div id="label_gal_3">
           {{#if store.store_gal_3_img}}
             <div><img src="{{store.store_gal_3_img}}"></div>
           {{else}}
-            <div class="placeholder_img ratio16-9"><label>1280 x 720</label></div>
+            <div class="placeholder_img ratio1-1"><label>1280 x 1280</label></div>
           {{/if}}
         </div>
         <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_3">(แก้ไข)</a></div>
       </div>
     </div>
 
-  	<div class="col-sm-4">
+    <div class="col-4" style="padding-left:1px; padding-right:15px;">
+      <div class="section sec_gal_4">
+        <div id="label_gal_4">
+          {{#if store.store_gal_4_img}}
+            <div><img src="{{store.store_gal_4_img}}"></div>
+          {{else}}
+            <div class="placeholder_img ratio1-1"><label>1280 x 1280</label></div>
+          {{/if}}
+        </div>
+        <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_gal_4">(แก้ไข)</a></div>
+      </div>
+    </div>
+
+  	<div class="col-sm-6">
   		<a href="{{store.store_line_link}}" id="label_line_link" target="_blank">
         <div class="section sec_line sec_social">
           {{#if store.store_line_id}}
@@ -150,7 +163,7 @@
       <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_line">(แก้ไข)</a></div>
     </div>
 
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <a href="{{store.store_fb_link}}" id="label_fb_link" target="_blank">
     		<div class="section sec_fb sec_social">
           {{#if store.store_fb_uname}}
@@ -163,7 +176,7 @@
       <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_fb">(แก้ไข)</a></div>
     </div>
 
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <a href="{{store.store_ig_link}}" id="label_ig_link" target="_blank">
         <div class="section sec_ig sec_social">
           {{#if store.store_ig_uname}}
@@ -176,7 +189,7 @@
       <div class="edit"><a href="#" data-toggle="modal" data-target="#modal_ig">(แก้ไข)</a></div>
     </div>
 
-    <div class="col-sm-4">
+    <div class="col-sm-6">
       <a href="#" target="_blank">
         <div class="section sec_phone sec_social">
           {{#if store.store_phone}}
@@ -198,7 +211,7 @@
           </div>
         {{else}}
           <div class="section sec_logo" style="width:64px; height:64px;">
-            <div class="placeholder_img ratio1-1"><label style="font-size:10px;">64x64</label></div>
+            <div class="placeholder_img ratio1-1"><label style="font-size:14px;">Logo</label></div>
           </div>
         {{/if}}
         </div>
@@ -567,6 +580,41 @@
         
       </div>
     </div>
+</div
+
+<!-- sec_gal_4 -->
+<div class="modal fade" id="modal_gal_4">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+      
+        <!-- Modal Header
+        <div class="modal-header">
+         <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        -->
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form enctype="multipart/form-data" id="edit_gal_4">
+            <label for="gal_4_preview">รูปภาพ:</label>
+            {{#if store.store_gal_4_img}}
+              <div><img src="{{store.store_gal_4_img}}" id="gal_4_preview"></div>
+            {{else}}
+              <div><img src="/images/original.png" id="gal_4_preview"></div>
+            {{/if}}
+            <div><input type="file" id="gal_4_upload" name="gal_4_upload"></div>
+          </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="modal_gal_4_save">บันทึก</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+        </div>
+        
+      </div>
+    </div>
 </div>
 
 <script type="text/javascript">
@@ -860,6 +908,36 @@ $(document).ready(function(){
           success: function(res) {
         if(res == true) {
           preview_2(fileSelect, '#label_gal_3');
+          alert('บันทึกเรียบร้อย');
+        }
+        else alert(res);
+          },
+          error: function(err) {
+            alert("Error: ", err)
+          },
+          crossDoamin: true
+        })
+    });
+
+    $("#gal_4_upload").change(function() {
+      preview(this, '#gal_4_preview');
+    });
+
+    $('#modal_gal_3_save').on('click', function(e) {
+      var fileSelect = document.getElementById('gal_4_upload');
+
+        var action = "gal_4";
+        var form = document.getElementById('edit_gal_4');
+        var data = new FormData(form);
+        $.ajax({
+          url: 'http://188.166.225.239/edit/' + $('#store').val() + '/' + action,
+          type: 'POST',
+          data: data,
+          processData: false,
+          contentType: false,
+          success: function(res) {
+        if(res == true) {
+          preview_2(fileSelect, '#label_gal_4');
           alert('บันทึกเรียบร้อย');
         }
         else alert(res);
