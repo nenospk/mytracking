@@ -42,7 +42,7 @@ app.use(cookieParser());
 var con = mysql.createConnection({
 	host: "localhost",
 	user: "root",
-	password: "nenaneno",
+	password: "Tracking2018",
 	database: "checktracking",
 	multipleStatements: true
 });
@@ -55,7 +55,7 @@ var options = {
 	host: 'localhost',
 	port: 3306,
 	user: 'root',
-	password: 'nenaneno',
+	password: 'Tracking2018',
 	database: 'checktracking'
 };
 
